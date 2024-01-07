@@ -18,17 +18,37 @@ const handleSubmit = (e) => {
 e.preventDefault()
 console.log(data)
 
-emailjs.sendForm('service_quzvufn', 'template_xad8hgo', 
-form.current, 'RIC4x65BxILJraNlf')
+e.target.reset()
 
-
-
- /* for disappearing form */
- e.target.reset()
 }
 
+const [message,setMessage] = useState(false)
+
+  const form = useRef(); 
+
+  
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_quzvufn', 'template_xad8hgo', form.current, 'RIC4x65BxILJraNlf')
+
+ /* for disappearing form */
+    e.target.reset()
+
+
+    /* .then((result) => {
+      e.preventDefault()
+      setMessage(true)
+        console.log(result.text);
+        console.log("message sent")
+    }, (error) => {
+        console.log(error.text);
+    });
+     */
+  };
+
   return ( 
-    <form method='post' ref={form} onSubmit={handleSubmit}>
+    <form method='post' ref={form} onSubmit={handleSubmit} >
     <h1>Contact <span>Here</span></h1>
     <input type="text" name='name' id='' 
     onChange={handleChange} value={data.name} placeholder='Full Name' />
@@ -42,11 +62,13 @@ form.current, 'RIC4x65BxILJraNlf')
     onChange={handleChange}
     value={data.phone}
      placeholder='+234' required/>
+
     <textarea name="message" id="" cols="30" rows="10" 
     onChange={handleChange}
     value={data.message}
     placeholder='type here...'/>
     <button type='submit'>Send</button>
+    {setMessage && <span>Thanks, I;ll reply ASAP</span>}
     </form>
     
   )

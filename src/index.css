@@ -45,3 +45,6 @@ form button{
   color: #fff;
   cursor: pointer;
 }
+button{
+  margin-right: 60px;
+}
