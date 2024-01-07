@@ -14,10 +14,11 @@ form{
   display: block;
 background-color: #fff;
 box-shadow: 1px 1px 3px 2px #ddd;
-margin: 40px auto;
+margin: 90px auto;
 max-width: 600px;
 max-height: 700px;
 padding: 20px 40px;
+border-radius: 3px;
 }
 
 form input, textarea{
@@ -40,7 +41,7 @@ form button{
   width: 80px;
   align-items: center;
   border: none;
-  background-color: rgb(129, 129, 214);
+  background-color: rgb(26, 26, 122);
   color: #fff;
   cursor: pointer;
 }
