@@ -1,5 +1,9 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import emailjs from '@emailjs/browser';
+
+
+// npm install @emailjs/browser --save
 
 
 const Great = () => {
@@ -13,10 +17,18 @@ setData({...data, [name]: value})
 const handleSubmit = (e) => {
 e.preventDefault()
 console.log(data)
+
+emailjs.sendForm('service_quzvufn', 'template_xad8hgo', 
+form.current, 'RIC4x65BxILJraNlf')
+
+
+
+ /* for disappearing form */
+ e.target.reset()
 }
 
   return ( 
-    <form method='post' onSubmit={handleSubmit}>
+    <form method='post' ref={form} onSubmit={handleSubmit}>
     <h1>Contact <span>Here</span></h1>
     <input type="text" name='name' id='' 
     onChange={handleChange} value={data.name} placeholder='Full Name' />
