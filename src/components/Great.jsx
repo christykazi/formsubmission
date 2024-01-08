@@ -23,13 +23,12 @@ const Great = () => {
         console.log(result.text);
         setMessage(true);
         setFormSubmitted(true);
+        // Reset the form
+        form.current.reset();
       })
       .catch((error) => {
         console.log(error.text);
       });
-
-    // Reset the form
-    form.current.reset();
   };
 
   const handleSubmit = (e) => {
@@ -38,22 +37,50 @@ const Great = () => {
 
     // Call sendEmail function to send the email
     sendEmail(e);
-
-    // You don't need to reset the form here; it's done in the sendEmail function
   };
 
   return (
     <div>
       {formSubmitted ? (
-        <span>Thanks, I'll reply ASAP</span>
+        <span>Thanks, I'll reply ASAP &#128512;&#128512;</span>
       ) : (
         <form method="post" ref={form} onSubmit={handleSubmit}>
           <h1>Contact <span>Here</span></h1>
-          <input type="text" name="name" onChange={handleChange} value={data.name} placeholder="Full Name" required/>
-          <input type="email" name="email" onChange={handleChange} value={data.email} placeholder="example@gmail.com"required/>
-          <input type="phone" name="phone" onChange={handleChange} value={data.phone} placeholder="+234" required />
-          <textarea name="message" cols="30" rows="10"  onChange={handleChange} value={data.message} placeholder="type here..." required />
+          <input
+            type="text"
+            name="name"
+            onChange={handleChange}
+            value={data.name}
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            onChange={handleChange}
+            value={data.email}
+            placeholder="example@gmail.com"
+            required
+          />
+          <input
+            type="phone"
+            name="phone"
+            onChange={handleChange}
+            value={data.phone}
+            placeholder="+234"
+            required
+          />
+          <textarea
+            name="message"
+            cols="30"
+            rows="10"
+            onChange={handleChange}
+            value={data.message}
+            placeholder="type here..."
+            required
+          />
           <button type="submit">Send</button>
+          {message && <span>Thanks, I'll reply ASAP &#128512;&#128512;</span>}
         </form>
       )}
     </div>
@@ -61,6 +88,7 @@ const Great = () => {
 };
 
 export default Great;
+
 
 
 
